@@ -11,7 +11,7 @@ using static System.Net.WebRequestMethods;
 namespace SeliniumTest
 {
     [TestClass]
-    public class UnitTest1
+    public class DisplayArrivalsTest
     {
         private static readonly string DriverDirectory = "C:\\webDrivers";
 
@@ -36,7 +36,7 @@ namespace SeliniumTest
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void DisplayArivalsTest1()
         {
             string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
@@ -45,7 +45,7 @@ namespace SeliniumTest
             _driver.Navigate().GoToUrl(url);
             Assert.AreEqual("Arrival List", _driver.Title);
 
-            //Tjekker om studerende vises i liste - Fejler hvis listen er tom
+            //Tjekker om studerende vises i liste - Testen fejler hvis listen er tom
             IWebElement GetAllButtonShowsStudents = _driver.FindElement(By.Id("getAllButton"));
             GetAllButtonShowsStudents.Click();
             Thread.Sleep(5000);
@@ -56,20 +56,47 @@ namespace SeliniumTest
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void DisplayArivalsTest2()
         {
             string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
 
             _driver.Navigate().GoToUrl(url);
 
-            //Tjekker om besked kommer frem hvis listen er tom - Fejler hvis listen ikke er tom
-            IWebElement GetAllButtonNoStudents = _driver.FindElement(By.Id("getAllButton"));
-            GetAllButtonNoStudents.Click();
-            Thread.Sleep(5000);
-            IWebElement showNoStudents = _driver.FindElement(By.Id("arrivalsStudent"));
-            string noStudentsMessage = showNoStudents.Text;
-            Assert.AreEqual("No Students", noStudentsMessage);
+            //Tjekker om besked kommer frem hvis listen er tom - Testen fejler hvis listen ikke er tom
+            IWebElement GetAllButton = _driver.FindElement(By.Id("getAllButton"));
+            GetAllButton.Click();
+            Thread.Sleep(1000);
+            IWebElement outputElement = _driver.FindElement(By.Id("noStudentMessage"));
+            string text = outputElement.Text;
+            
+            Assert.AreEqual("No Students", text);
+
+        }
+
+        [TestMethod]
+        public void LoginDetailsTest1()
+        {
+            string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/LoginPage.html";
+            //string url = "http://127.0.0.1:5500/index.html";
+ 
+            _driver.Navigate().GoToUrl(url);
+
+            Assert.AreEqual("Login Form", _driver.Title);
+
+            /*IWebElement inputElement = _driver.FindElement(By.Id("enterAWord"));
+            inputElement.SendKeys("Banana"); //ACT
+
+            IWebElement saveButtonElement = _driver.FindElement(By.Id("saveThisWord"));
+            saveButtonElement.Click();
+
+            IWebElement showButtonElement = _driver.FindElement(By.Id("showThisWord"));
+            showButtonElement.Click();
+
+            IWebElement outputElement = _driver.FindElement(By.Id("message"));
+            string text = outputElement.Text;
+
+            Assert.AreEqual("Your word is: Banana", text); */
         }
     }
 }
