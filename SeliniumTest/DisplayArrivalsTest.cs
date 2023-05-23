@@ -51,38 +51,44 @@ namespace SeliniumTest
             Thread.Sleep(5000);
             IWebElement showElement = _driver.FindElement(By.Id("arrivalsStudent"));
             string student = showElement.Text;
-            Assert.AreEqual("1 12345678 2023-05-23T08:25:43.691Z Bo", student);
+            Assert.AreEqual("1 12345678 23/05 08:25 Bo", student);
             
         }
 
         [TestMethod]
-        public void DisplayArivalsTest2()
+        public void DisplayDeparturesTest1()
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
 
+            //Tjekker titel
             _driver.Navigate().GoToUrl(url);
+            Assert.AreEqual("Arrival List", _driver.Title);
 
-            //Tjekker om besked kommer frem hvis listen er tom - Testen fejler hvis listen ikke er tom
-            IWebElement GetAllButton = _driver.FindElement(By.Id("getAllButton"));
-            GetAllButton.Click();
-            Thread.Sleep(1000);
-            IWebElement outputElement = _driver.FindElement(By.Id("noStudentMessage"));
-            string text = outputElement.Text;
-            
-            Assert.AreEqual("No Students", text);
+            //Tjekker om studerende vises i liste - Testen fejler hvis listen er tom
+            IWebElement GetAllButtonShowsStudents = _driver.FindElement(By.Id("getAllDeparturesButton"));
+            GetAllButtonShowsStudents.Click();
+            Thread.Sleep(5000);
+            IWebElement showElement = _driver.FindElement(By.Id("departuresStudent"));
+            string student = showElement.Text;
+            Assert.AreEqual("1 22334455 23/05 11:35 Mary", student);
 
+      
         }
 
+
+
+
+
         [TestMethod]
-        public void LoginDetailsTest1()
+        public void ArrivalsTitleTest1()
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
  
             _driver.Navigate().GoToUrl(url);
 
-            Assert.AreEqual("Login Form", _driver.Title);
+            Assert.AreEqual("Arrival List", _driver.Title);
 
         
         }
