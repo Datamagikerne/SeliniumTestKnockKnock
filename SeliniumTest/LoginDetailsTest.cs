@@ -17,6 +17,8 @@ namespace SeliniumTest
 
         private static IWebDriver _driver;
 
+        string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/LoginPage.html";
+
         [ClassInitialize]
         public static void Setup(TestContext context)
         {
@@ -38,21 +40,32 @@ namespace SeliniumTest
         [TestMethod]
         public void LoginDetailsTest1() //Tester om man kan skrive i feltet og klikke login knappen
         {
-            string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/LoginPage.html";
+            string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/LoginPage.html"; //Local
             //string url = "http://127.0.0.1:5500/index.html";
- 
+
             _driver.Navigate().GoToUrl(url);
 
-            Assert.AreEqual("Login Form", _driver.Title); //Tester titel
-
             IWebElement inputEmailElement = _driver.FindElement(By.Id("email"));
-            inputEmailElement.SendKeys("ann@gmail.com"); //ACT
+            inputEmailElement.SendKeys("knap@live.dk"); //ACT
 
             IWebElement inputPasswordElement = _driver.FindElement(By.Id("password"));
-            inputPasswordElement.SendKeys("12345"); //ACT
+            inputPasswordElement.SendKeys("1234"); //ACT
 
             IWebElement loginButtonElement = _driver.FindElement(By.Id("loginButton"));
             loginButtonElement.Click();
+        }
+
+        [TestMethod]
+        public void LoginDetailsTest2()
+        {
+            string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/LoginPage.html";
+
+
+            //string url = "http://127.0.0.1:5500/index.html";
+
+            _driver.Navigate().GoToUrl(url);
+
+            Assert.AreEqual("Login Form", _driver.Title);
         }
     }
 }

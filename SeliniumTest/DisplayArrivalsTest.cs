@@ -38,7 +38,7 @@ namespace SeliniumTest
         [TestMethod]
         public void DisplayArivalsTest1()
         {
-            string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/displayArrivals.html";
+            string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
 
             //Tjekker titel
@@ -51,14 +51,14 @@ namespace SeliniumTest
             Thread.Sleep(5000);
             IWebElement showElement = _driver.FindElement(By.Id("arrivalsStudent"));
             string student = showElement.Text;
-            Assert.AreEqual("1 23232323 2023-05-11T13:26:05.377 Lasse", student);
+            Assert.AreEqual("1 12345678 2023-05-23T08:25:43.691Z Bo", student);
             
         }
 
         [TestMethod]
         public void DisplayArivalsTest2()
         {
-            string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/displayArrivals.html";
+            string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
 
             _driver.Navigate().GoToUrl(url);
@@ -77,26 +77,14 @@ namespace SeliniumTest
         [TestMethod]
         public void LoginDetailsTest1()
         {
-            string url = "file:///C:/Users/annso/OneDrive/Dokumenter/KnockKnock-main/LoginPage.html";
+            string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
             //string url = "http://127.0.0.1:5500/index.html";
  
             _driver.Navigate().GoToUrl(url);
 
             Assert.AreEqual("Login Form", _driver.Title);
 
-            /*IWebElement inputElement = _driver.FindElement(By.Id("enterAWord"));
-            inputElement.SendKeys("Banana"); //ACT
-
-            IWebElement saveButtonElement = _driver.FindElement(By.Id("saveThisWord"));
-            saveButtonElement.Click();
-
-            IWebElement showButtonElement = _driver.FindElement(By.Id("showThisWord"));
-            showButtonElement.Click();
-
-            IWebElement outputElement = _driver.FindElement(By.Id("message"));
-            string text = outputElement.Text;
-
-            Assert.AreEqual("Your word is: Banana", text); */
+        
         }
     }
 }
