@@ -34,10 +34,9 @@ namespace SeliniumTest
         }
 
         [TestMethod]
-        public void IndexTest1() //Tester om man kan skrive i feltet og klikke login knappen
+        public void IndexTest1() //Tester om man kan skrive i felterne og klikke login knappen
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/index.html"; //Local
-            //string url = "http://127.0.0.1:5500/index.html";
 
             _driver.Navigate().GoToUrl(url);
 

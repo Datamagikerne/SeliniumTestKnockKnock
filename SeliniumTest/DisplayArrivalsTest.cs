@@ -20,13 +20,9 @@ namespace SeliniumTest
         [ClassInitialize]
         public static void Setup(TestContext context)
         {
-            //Her vælger man hvilken driver man har I sinde at bruge. I dette eksempel er FireFox brugt. 
-            //FireFox er den langsommeste, så her har man mulighed for at se hvad der sker. Men det går stadig meget stærkt!
             //_driver = new ChromeDriver(DriverDirectory); // fast
             //_driver = new FirefoxDriver(DriverDirectory);
             _driver = new EdgeDriver(DriverDirectory); //  fast
-            // Driver file must be renamed to MicrosoftWebDriver.exe OR msedgedriver.exe
-            // depending on the version of Selenium?
         }
 
         [ClassCleanup]
@@ -39,7 +35,6 @@ namespace SeliniumTest
         public void DisplayArivalsTest1()
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
-            //string url = "http://127.0.0.1:5500/index.html";
 
             //Tjekker titel
             _driver.Navigate().GoToUrl(url);
@@ -59,7 +54,6 @@ namespace SeliniumTest
         public void DisplayDeparturesTest1()
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
-            //string url = "http://127.0.0.1:5500/index.html";
 
             //Tjekker titel
             _driver.Navigate().GoToUrl(url);
@@ -76,21 +70,14 @@ namespace SeliniumTest
       
         }
 
-
-
-
-
         [TestMethod]
         public void ArrivalsTitleTest1()
         {
             string url = "file:///C:/Users/annso/KnockKnock/KnockKnock-main/displayArrivals.html";
-            //string url = "http://127.0.0.1:5500/index.html";
  
             _driver.Navigate().GoToUrl(url);
 
             Assert.AreEqual("Arrival List", _driver.Title);
-
-        
         }
     }
 }
